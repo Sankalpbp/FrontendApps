@@ -2,3 +2,28 @@
     background-color: green;
     color: white;
 }
+
+.main-container {
+    margin: 10rem;
+}
+
+input {
+    width: 20rem;
+    margin-bottom: 1rem;
+}
+
+.create-button-container {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.sum-button-container {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.table-container {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
