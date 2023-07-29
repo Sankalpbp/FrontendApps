@@ -19,7 +19,7 @@ addElementButton.addEventListener ( 'click', event => {
         return;
     }
     sum += ( Number ) ( array [ lastIndex ] );
-    numbersRow.children [ lastIndex ].classList.add ( ...[ 'bg-secondary', 'text-white', 'font-weight-bold' ] );
+    numbersRow.children [ lastIndex ].classList.add ( ...[ 'bg-secondary', 'text-white', 'fw-bold' ] );
     ++lastIndex;
     if ( lastIndex === array.length ) {
         updateAddButtonElement ();
