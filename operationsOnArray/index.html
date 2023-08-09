@@ -13,8 +13,8 @@
             <div class="h1">Array Operations</div>
         </div>
 
-        <div class="row mt-5">
-            <div class="form">
+        <div class="form">
+            <div class="row mt-5">
                 <div>
                     <label class="form-label">Enter the elements</label>
                     <input class="numbers form-control" type="text" placeholder="Write comma separated elements to add"/>
@@ -33,6 +33,63 @@
             </table>
         </div>
 
+        <div class="row mt-5">
+            <div class="h2 col-4">Operations </div>
+            <div class="col-6 mt-1">
+                <select class="form-select operation-type">
+                    <option selected value="selection">Select an operation</option>
+                    <option value="insert">Insert</option>
+                    <option value="delete">Delete</option>
+                    <option value="replace">Replace</option>
+                </select>
+            </div>
+            <button type="button" class="go-button col-2 btn btn-success btn-sm">Go</button>
+        </div>
+
+        <div class="h4 row text-danger empty-array-warning-element" style="display: none;">
+            Please create the array first!!
+        </div>
+
+        <div class="h4 row text-danger invalid-operation-warning-element" style="display: none;">
+            Please choose a valid operation!!
+        </div>
+
+        <div class="form insert-component" style="display: none;">
+            <div class="row mt-5">
+                <div class="col-4">
+                    <label class="form-label">Enter the element to insert</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control element" type="text" placeholder="Enter a number"/>
+                </div>
+            </div>
+            <div class="row mt-4 element-not-found-error" style="display: none;">
+                <div class="col-4"></div>
+                <div class="col-8 text-danger">
+                    Please fill the element to insert
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-4">
+                    <label class="form-label">Enter the index where to insert</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control index" type="text" placeholder="Enter a number between 0 and (array's size - 1)"/>
+                </div>
+            </div>
+            <div class="row mt-4 index-not-found-error" style="display: none;">
+                <div class="col-4"></div>
+                <div class="col-8 text-danger">
+                    Please fill the index where to insert
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-4"></div>
+                <div class="col-8">
+                    <button type="button" class="btn btn-primary insert-button">Insert</button>
+                </div>
+            </div>
+        </div>
 
     </div>
     <script src="index.js"></script>
