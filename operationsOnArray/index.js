@@ -11,12 +11,32 @@ const invalidOperationWarningElement = document.querySelector ( '.invalid-operat
 const insertButton = document.querySelector ( '.insert-button' );
 const elementNotFoundErrorElement = document.querySelector ( '.element-not-found-error' );
 const indexNotFoundErrorElement = document.querySelector ( '.index-not-found-error' );
+const deleteComponent = document.querySelector ( '.delete-component' );
+const deleteButton = document.querySelector ( '.delete-button' );
+const indexNotFoundErrorDeleteElement = document.querySelector ( '.index-not-found-error-delete' );
 
 let lastIndex = 0;
 let array = [ ];
 
+deleteButton.addEventListener ( 'click', event => {
+    const index = document.querySelector ( '.index-to-delete' ).value;
+
+    if ( index === '' || index < 0 || index > array.length - 1 ) {
+        removeOtherElements();
+        indexNotFoundErrorDeleteElement.style.display = 'block';
+        return;
+    }
+
+    array.splice ( index, 1 );
+
+    removeOtherElements();
+    const newNumbersRow = createRow ();
+    const oldNumbersRow = numbersTableElement.querySelector ( 'tr' );
+    oldNumbersRow.replaceWith ( newNumbersRow );
+});
+
 insertButton.addEventListener ( 'click', event => {
-    const element = document.querySelector ( '.element' ).value;
+    const element = document.querySelector ( '.element-to-insert' ).value;
     const index = document.querySelector ( '.index' ).value;
 
     if ( element === '' ) {
@@ -25,7 +45,7 @@ insertButton.addEventListener ( 'click', event => {
         return;
     }
 
-    if ( index === '' ) {
+    if ( index === '' || index < 0 || index > array.length - 1) {
         removeOtherElements ();
         indexNotFoundErrorElement.style.display = 'block';
         return;
@@ -71,6 +91,9 @@ goButton.addEventListener ( 'click', event => {
         case 'insert':
             insertComponent.style.display = 'block';
             break;
+        case 'delete':
+            deleteComponent.style.display = 'block';
+            break;
     }
 });
 
@@ -79,6 +102,7 @@ function removeOtherElements () {
     invalidOperationWarningElement.style.display = 'none';
     elementNotFoundErrorElement.style.display = 'none';
     indexNotFoundErrorElement.style.display = 'none';
+    indexNotFoundErrorDeleteElement.style.display = 'none';
 }
 
 createTableButton.addEventListener ( 'click', event => {

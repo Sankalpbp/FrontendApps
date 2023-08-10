@@ -54,13 +54,36 @@
             Please choose a valid operation!!
         </div>
 
+        <div class="form delete-component" style="display: none;">
+            <div class="row mt-5">
+                <div class="col-4">
+                    <label class="form-label">Enter the element index to delete</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control index-to-delete" type="text" placeholder="Enter the index between 0 and (array's size - 1)"/>
+                </div>
+            </div>
+            <div class="row mt-4 index-not-found-error-delete" style="display: none;">
+                <div class="col-4"></div>
+                <div class="col-8 text-danger">
+                    Please fill the index from where to delete
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-4"></div>
+                <div class="col-8">
+                    <button type="button" class="btn btn-primary delete-button">Delete</button>
+                </div>
+            </div>
+        </div>
+
         <div class="form insert-component" style="display: none;">
             <div class="row mt-5">
                 <div class="col-4">
                     <label class="form-label">Enter the element to insert</label>
                 </div>
                 <div class="col-8">
-                    <input class="form-control element" type="text" placeholder="Enter a number"/>
+                    <input class="form-control element-to-insert" type="text" placeholder="Enter a number"/>
                 </div>
             </div>
             <div class="row mt-4 element-not-found-error" style="display: none;">
@@ -80,7 +103,7 @@
             <div class="row mt-4 index-not-found-error" style="display: none;">
                 <div class="col-4"></div>
                 <div class="col-8 text-danger">
-                    Please fill the index where to insert
+                    Please fill the valid index where to insert
                 </div>
             </div>
             <div class="row mt-4">
