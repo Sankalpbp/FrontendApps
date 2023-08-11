@@ -14,9 +14,34 @@ const indexNotFoundErrorElement = document.querySelector ( '.index-not-found-err
 const deleteComponent = document.querySelector ( '.delete-component' );
 const deleteButton = document.querySelector ( '.delete-button' );
 const indexNotFoundErrorDeleteElement = document.querySelector ( '.index-not-found-error-delete' );
+const replaceComponent = document.querySelector ( '.replace-component' );
+const replaceButton = document.querySelector ( '.replace-button' );
+const elementNotFoundErrorReplaceElement = document.querySelector ( '.element-not-found-error-replace' );
+const indexNotFoundErrorReplaceElement = document.querySelector ( '.index-not-found-error-replace' );
 
 let lastIndex = 0;
 let array = [ ];
+
+replaceButton.addEventListener ( 'click', event => {
+    const index = document.querySelector ( '.index-to-replace' ).value;
+    const element = document.querySelector ( '.element-to-replace' ).value;
+
+    if ( index === '' || index < 0 || index > array.length - 1 ) {
+        removeOtherElements ();
+        indexNotFoundErrorReplaceElement.style.display = 'block';
+        return;
+    }
+
+    if ( element === '' ) {
+        removeOtherElements ();
+        elementNotFoundErrorElement.style.display = 'block';
+        return;
+    }
+
+    array [ index ] = element;
+    removeOtherElements();
+    createTable ();
+});
 
 deleteButton.addEventListener ( 'click', event => {
     const index = document.querySelector ( '.index-to-delete' ).value;
@@ -30,9 +55,7 @@ deleteButton.addEventListener ( 'click', event => {
     array.splice ( index, 1 );
 
     removeOtherElements();
-    const newNumbersRow = createRow ();
-    const oldNumbersRow = numbersTableElement.querySelector ( 'tr' );
-    oldNumbersRow.replaceWith ( newNumbersRow );
+    createTable ();
 });
 
 insertButton.addEventListener ( 'click', event => {
@@ -56,9 +79,8 @@ insertButton.addEventListener ( 'click', event => {
         element,
         ...array.slice ( index )
     ];
-    const newNumbersRow = createRow ( );
-    const oldNumbersRow = numbersTableElement.querySelector ( 'tr' );
-    oldNumbersRow.replaceWith ( newNumbersRow );
+    removeOtherElements ();
+    createTable ();
 });
 
 function createRow ( ) {
@@ -69,6 +91,12 @@ function createRow ( ) {
         numbersRow.appendChild ( cell );
     });
     return numbersRow;
+}
+
+function createTable ( ) {
+    const newNumbersRow = createRow ( );
+    const oldNumbersRow = numbersTableElement.querySelector ( 'tr' );
+    oldNumbersRow.replaceWith ( newNumbersRow );
 }
 
 resetButton.addEventListener ( 'click', event => {
@@ -94,6 +122,13 @@ goButton.addEventListener ( 'click', event => {
         case 'delete':
             deleteComponent.style.display = 'block';
             break;
+        case 'replace':
+            replaceComponent.style.display = 'block';
+            break;
+        case 'sort':
+            array.sort();
+            createTable ();
+            break;
     }
 });
 
@@ -103,6 +138,9 @@ function removeOtherElements () {
     elementNotFoundErrorElement.style.display = 'none';
     indexNotFoundErrorElement.style.display = 'none';
     indexNotFoundErrorDeleteElement.style.display = 'none';
+    insertComponent.style.display = 'none';
+    deleteComponent.style.display = 'none';
+    replaceComponent.style.display = 'none';
 }
 
 createTableButton.addEventListener ( 'click', event => {

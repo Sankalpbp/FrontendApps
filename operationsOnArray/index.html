@@ -41,6 +41,7 @@
                     <option value="insert">Insert</option>
                     <option value="delete">Delete</option>
                     <option value="replace">Replace</option>
+                    <option value="sort">Sort</option>
                 </select>
             </div>
             <button type="button" class="go-button col-2 btn btn-success btn-sm">Go</button>
@@ -73,6 +74,43 @@
                 <div class="col-4"></div>
                 <div class="col-8">
                     <button type="button" class="btn btn-primary delete-button">Delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form replace-component" style="display: none;">
+            <div class="row mt-5">
+                <div class="col-4">
+                    <label class="form-label">Enter the element to replace with</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control element-to-replace" type="text" placeholder="Enter a number"/>
+                </div>
+            </div>
+            <div class="row mt-4 element-not-found-error-replace" style="display: none;">
+                <div class="col-4"></div>
+                <div class="col-8 text-danger">
+                    Please fill the element to replace with !!
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-4">
+                    <label class="form-label">Enter the index where to replace</label>
+                </div>
+                <div class="col-8">
+                    <input class="form-control index-to-replace" type="text" placeholder="Enter a number between 0 and (array's size - 1)"/>
+                </div>
+            </div>
+            <div class="row mt-4 index-not-found-error-replace" style="display: none;">
+                <div class="col-4"></div>
+                <div class="col-8 text-danger">
+                    Please fill the valid index where to replace !!
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-4"></div>
+                <div class="col-8">
+                    <button type="button" class="btn btn-primary replace-button">Replace</button>
                 </div>
             </div>
         </div>
